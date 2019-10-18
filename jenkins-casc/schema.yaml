@@ -1,0 +1,6872 @@
+
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "http://jenkins.io/configuration-as-code#",
+  "description": "Jenkins Configuration as Code",
+  "type": "object",
+  "properties": {
+
+    "configuration-as-code": {
+      "type": "object",
+      "$ref": "#/definitions/io.jenkins.plugins.casc.ConfigurationContext"
+    },
+    "credentials": {
+      "type": "object",
+      "$ref": "#/definitions/com.cloudbees.plugins.credentials.GlobalCredentialsConfiguration"
+    },
+    "jenkins": {
+      "type": "object",
+      "$ref": "#/definitions/jenkins.model.Jenkins"
+    },
+    "jobs": {
+      "type": "object",
+      "$ref": "#/definitions/[Ljavaposse.jobdsl.dsl.GeneratedItems;"
+    },
+    "": {
+      "type": "object",
+      "$ref": "#/definitions/com.cloudbees.plugins.credentials.GlobalCredentialsConfiguration$Category"
+    },
+    "security": {
+      "type": "object",
+      "$ref": "#/definitions/jenkins.model.GlobalConfigurationCategory$Security"
+    },
+    "unclassified": {
+      "type": "object",
+      "$ref": "#/definitions/jenkins.model.GlobalConfigurationCategory$Unclassified"
+    },
+    "tool": {
+      "type": "object",
+      "$ref": "#/definitions/jenkins.tools.ToolConfigurationCategory"
+    }
+  },
+  "definitions": {
+
+    "io.jenkins.plugins.casc.ConfigurationContext": {
+      "type": "object",
+      "properties": {
+
+        "deprecated": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "reject",
+          "warn"
+        ]
+      
+        } ,
+        "restricted": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "reject",
+          "beta",
+          "warn"
+        ]
+      
+        } ,
+        "unknown": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "reject",
+          "warn"
+        ]
+      
+        } ,
+        "version": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "ONE"
+        ]
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.GlobalCredentialsConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "system": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.SystemCredentialsProvider"
+        } 
+      }
+    }
+,
+    "jenkins.model.Jenkins": {
+      "type": "object",
+      "properties": {
+
+        "agentProtocols": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } ,
+        "authorizationStrategy": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.AuthorizationStrategy"
+        } ,
+        "clouds": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.Cloud"}
+        } ,
+        "crumbIssuer": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.csrf.CrumbIssuer"
+        } ,
+        "disableRememberMe": {
+
+        "type": "boolean"
+      
+        } ,
+        "globalNodeProperties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.NodeProperty"}
+        } ,
+        "labelString": {
+
+        "type": "string"
+      
+        } ,
+        "markupFormatter": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.markup.MarkupFormatter"
+        } ,
+        "mode": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "NORMAL",
+          "EXCLUSIVE"
+        ]
+      
+        } ,
+        "myViewsTabBar": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.MyViewsTabBar"
+        } ,
+        "nodeName": {
+
+        "type": "string"
+      
+        } ,
+        "nodeProperties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.NodeProperty"}
+        } ,
+        "nodes": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.Node"}
+        } ,
+        "numExecutors": {
+
+        "type": "integer"
+      
+        } ,
+        "primaryView": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.View"
+        } ,
+        "projectNamingStrategy": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.ProjectNamingStrategy"
+        } ,
+        "proxy": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.ProxyConfiguration"
+        } ,
+        "quietPeriod": {
+
+        "type": "integer"
+      
+        } ,
+        "remotingSecurity": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.s2m.AdminWhitelistRule"
+        } ,
+        "scmCheckoutRetryCount": {
+
+        "type": "integer"
+      
+        } ,
+        "securityRealm": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.SecurityRealm"
+        } ,
+        "slaveAgentPort": {
+
+        "type": "integer"
+      
+        } ,
+        "systemMessage": {
+
+        "type": "string"
+      
+        } ,
+        "updateCenter": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.UpdateCenter"
+        } ,
+        "views": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.View"}
+        } ,
+        "viewsTabBar": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.ViewsTabBar"
+        } 
+      }
+    }
+,
+    "[javaposse.jobdsl.dsl.GeneratedItems;": {
+      "type": "array",
+      "items": {
+        "type": "#/definitions/io.jenkins.plugins.casc.support.jobdsl.ScriptSource"
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.GlobalCredentialsConfiguration$Category": {
+      "type": "object",
+      "properties": {
+
+        "configuration": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderManager$Configuration"
+        } 
+      }
+    }
+,
+    "jenkins.model.GlobalConfigurationCategory$Security": {
+      "type": "object",
+      "properties": {
+
+        "apiToken": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.apitoken.ApiTokenPropertyConfiguration"
+        } ,
+        "crumb": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.csrf.GlobalCrumbIssuerConfiguration"
+        } ,
+        "downloadSettings": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.DownloadSettings"
+        } ,
+        "globalJobDslSecurityConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/javaposse.jobdsl.plugin.GlobalJobDslSecurityConfiguration"
+        } ,
+        "masterKillSwitchConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.s2m.MasterKillSwitchConfiguration"
+        } ,
+        "queueItemAuthenticator": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.QueueItemAuthenticatorConfiguration"
+        } ,
+        "sSHD": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.main.modules.sshd.SSHD"
+        } ,
+        "updateSiteWarningsConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.UpdateSiteWarningsConfiguration"
+        } 
+      }
+    }
+,
+    "jenkins.model.GlobalConfigurationCategory$Unclassified": {
+      "type": "object",
+      "properties": {
+
+        "administrativeMonitorsConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.management.AdministrativeMonitorsConfiguration"
+        } ,
+        "artifactManager": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.ArtifactManagerConfiguration"
+        } ,
+        "bitbucketEndpointConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketEndpointConfiguration"
+        } ,
+        "buildStepOperation": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.build_timeout.operations.BuildStepOperation$DescriptorImpl"
+        } ,
+        "casCGlobalConfig": {
+"type":  "object",
+        "$ref": "#/definitions/io.jenkins.plugins.casc.CasCGlobalConfig"
+        } ,
+        "cloud": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalCloudConfiguration"
+        } ,
+        "defaultView": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.GlobalDefaultViewConfiguration"
+        } ,
+        "extendedEmailPublisher": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.emailext.ExtendedEmailPublisherDescriptor"
+        } ,
+        "gitHubConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.github_branch_source.GitHubConfiguration"
+        } ,
+        "gitHubPluginConfig": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.github.config.GitHubPluginConfig"
+        } ,
+        "gitParameter": {
+"type":  "object",
+        "$ref": "#/definitions/net.uaznia.lukanus.hudson.plugins.gitparameter.GitParameterDefinition$DescriptorImpl"
+        } ,
+        "gitSCM": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.GitSCM$DescriptorImpl"
+        } ,
+        "globalDefaultFlowDurabilityLevel": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.workflow.flow.GlobalDefaultFlowDurabilityLevel$DescriptorImpl"
+        } ,
+        "globalLibraries": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.workflow.libs.GlobalLibraries"
+        } ,
+        "jiraGlobalConfiguration": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.jira.JiraGlobalConfiguration"
+        } ,
+        "location": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.JenkinsLocationConfiguration"
+        } ,
+        "lockableResourcesManager": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkins.plugins.lockableresources.LockableResourcesManager"
+        } ,
+        "mailer": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tasks.Mailer$DescriptorImpl"
+        } ,
+        "masterBuild": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.MasterBuildConfiguration"
+        } ,
+        "mavenModuleSet": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.maven.MavenModuleSet$DescriptorImpl"
+        } ,
+        "myView": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.MyViewsTabBar$GlobalConfigurationImpl"
+        } ,
+        "nodeProperties": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalNodePropertiesConfiguration"
+        } ,
+        "pipeline-model": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.pipeline.modeldefinition.config.GlobalConfig"
+        } ,
+        "plugin": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalPluginConfiguration"
+        } ,
+        "pollSCM": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.triggers.SCMTrigger$DescriptorImpl"
+        } ,
+        "projectNamingStrategy": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalProjectNamingStrategyConfiguration"
+        } ,
+        "quietPeriod": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalQuietPeriodConfiguration"
+        } ,
+        "scmRetryCount": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.GlobalSCMRetryCountConfiguration"
+        } ,
+        "shell": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tasks.Shell$DescriptorImpl"
+        } ,
+        "singleConditionalBuilder": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder$SingleConditionalBuilderDescriptor"
+        } ,
+        "slackNotifier": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.plugins.slack.SlackNotifier$DescriptorImpl"
+        } ,
+        "timestamperConfig": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.timestamper.TimestamperConfig"
+        } ,
+        "usageStatistics": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.UsageStatistics"
+        } ,
+        "viewsTabBar": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.ViewsTabBar$GlobalConfigurationImpl"
+        } 
+      }
+    }
+,
+    "jenkins.tools.ToolConfigurationCategory": {
+      "type": "object",
+      "properties": {
+
+        "dockerTool": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.docker.commons.tools.DockerTool$DescriptorImpl"
+        } ,
+        "git": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.GitTool$DescriptorImpl"
+        } ,
+        "jdk": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.JDK$DescriptorImpl"
+        } ,
+        "jgit": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.gitclient.JGitTool$DescriptorImpl"
+        } ,
+        "jgitapache": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.gitclient.JGitApacheTool$DescriptorImpl"
+        } ,
+        "maven": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.mvn.GlobalMavenConfig"
+        } ,
+        "mercurialInstallation": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.mercurial.MercurialInstallation$DescriptorImpl"
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.SystemCredentialsProvider": {
+      "type": "object",
+      "properties": {
+
+        "domainCredentials": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.domains.DomainCredentials"}
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.domains.DomainCredentials": {
+      "type": "object",
+      "properties": {
+
+        "credentials": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.Credentials"}
+        } ,
+        "domain": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.domains.Domain"
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "password": {
+
+        "type": "string"
+      
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } ,
+        "username": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.credentials.DockerServerCredentials": {
+      "type": "object",
+      "properties": {
+
+        "clientCertificate": {
+
+        "type": "string"
+      
+        } ,
+        "clientKeySecret": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.util.Secret"
+        } ,
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } ,
+        "serverCaCertificate": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "passphrase": {
+
+        "type": "string"
+      
+        } ,
+        "privateKeySource": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$PrivateKeySource"
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } ,
+        "username": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$DirectEntryPrivateKeySource": {
+      "type": "object",
+      "properties": {
+
+        "privateKey": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.util.Secret"
+        } 
+      }
+    }
+,
+  "com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$PrivateKeySource": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "directEntry" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$DirectEntryPrivateKeySource" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "fileName": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } ,
+        "secretBytes": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.SecretBytes"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } ,
+        "secret": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.util.Secret"
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "keyStoreSource": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl$KeyStoreSource"
+        } ,
+        "password": {
+
+        "type": "string"
+      
+        } ,
+        "scope": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "SYSTEM",
+          "GLOBAL",
+          "USER"
+        ]
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl$UploadedKeyStoreSource": {
+      "type": "object",
+      "properties": {
+
+        "uploadedKeystore": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.SecretBytes"
+        } 
+      }
+    }
+,
+  "com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl$KeyStoreSource": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "uploaded" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl$UploadedKeyStoreSource" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+  "com.cloudbees.plugins.credentials.Credentials": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "dockerServer" : { "$ref" : "#/definitions/org.jenkinsci.plugins.docker.commons.credentials.DockerServerCredentials" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "file" : { "$ref" : "#/definitions/org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "string" : { "$ref" : "#/definitions/org.jenkinsci.plugins.plaincredentials.impl.StringCredentialsImpl" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "basicSSHUserPrivateKey" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "certificate" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.impl.CertificateCredentialsImpl" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "usernamePassword" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "com.cloudbees.plugins.credentials.domains.Domain": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "specifications": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.plugins.credentials.domains.DomainSpecification"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.credentials.DockerServerDomainSpecification": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.domains.HostnameSpecification": {
+      "type": "object",
+      "properties": {
+
+        "excludes": {
+
+        "type": "string"
+      
+        } ,
+        "includes": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.domains.HostnamePortSpecification": {
+      "type": "object",
+      "properties": {
+
+        "excludes": {
+
+        "type": "string"
+      
+        } ,
+        "includes": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.domains.PathSpecification": {
+      "type": "object",
+      "properties": {
+
+        "caseSensitive": {
+
+        "type": "boolean"
+      
+        } ,
+        "excludes": {
+
+        "type": "string"
+      
+        } ,
+        "includes": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.domains.SchemeSpecification": {
+      "type": "object",
+      "properties": {
+
+        "schemes": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "com.cloudbees.plugins.credentials.domains.DomainSpecification": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "dockerServer" : { "$ref" : "#/definitions/org.jenkinsci.plugins.docker.commons.credentials.DockerServerDomainSpecification" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "schemeSpecification" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.domains.SchemeSpecification" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "hostnamePortSpecification" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.domains.HostnamePortSpecification" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "pathSpecification" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.domains.PathSpecification" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "hostnameSpecification" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.domains.HostnameSpecification" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.security.AuthorizationStrategy$Unsecured": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.security.LegacyAuthorizationStrategy": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.security.FullControlOnceLoggedInAuthorizationStrategy": {
+      "type": "object",
+      "properties": {
+
+        "allowAnonymousRead": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+  "hudson.security.AuthorizationStrategy": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "legacy" : { "$ref" : "#/definitions/hudson.security.LegacyAuthorizationStrategy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "loggedInUsersCanDoAnything" : { "$ref" : "#/definitions/hudson.security.FullControlOnceLoggedInAuthorizationStrategy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "unsecured" : { "$ref" : "#/definitions/hudson.security.AuthorizationStrategy$Unsecured" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+  "hudson.slaves.Cloud": {
+    "type": "object"
+    
+  }
+,
+    "hudson.model.AllView": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.ViewProperty"}
+        } 
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView": {
+      "type": "object",
+      "properties": {
+
+        "alwaysAllowManualTrigger": {
+
+        "type": "boolean"
+      
+        } ,
+        "buildCard": {
+"type":  "object",
+        "$ref": "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.BuildCardExtension"
+        } ,
+        "buildViewTitle": {
+
+        "type": "string"
+      
+        } ,
+        "columnHeaders": {
+"type":  "object",
+        "$ref": "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.PipelineHeaderExtension"
+        } ,
+        "consoleOutputLinkStyle": {
+
+        "type": "string"
+      
+        } ,
+        "cssUrl": {
+
+        "type": "string"
+      
+        } ,
+        "gridBuilder": {
+"type":  "object",
+        "$ref": "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.ProjectGridBuilder"
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "noOfDisplayedBuilds": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.ViewProperty"}
+        } ,
+        "refreshFrequency": {
+
+        "type": "integer"
+      
+        } ,
+        "rowHeaders": {
+"type":  "object",
+        "$ref": "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.PipelineHeaderExtension"
+        } ,
+        "selectedJob": {
+
+        "type": "string"
+      
+        } ,
+        "showPipelineDefinitionHeader": {
+
+        "type": "boolean"
+      
+        } ,
+        "showPipelineParameters": {
+
+        "type": "boolean"
+      
+        } ,
+        "showPipelineParametersInHeaders": {
+
+        "type": "boolean"
+      
+        } ,
+        "triggerOnlyLatestJob": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.BuildVariablesHeader": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.ParametersActionHeader": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.SimpleColumnHeader": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.SimpleRowHeader": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.NullColumnHeader": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.FilteredVariablesHeader": {
+      "type": "object",
+      "properties": {
+
+        "filteredVariables": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.FilteredVariablesHeader$FilteredVariable"}
+        } 
+      }
+    }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.FilteredVariablesHeader$FilteredVariable": {
+      "type": "object",
+      "properties": {
+
+        "variableName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.PipelineHeaderExtension": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "filteredVariablesHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.FilteredVariablesHeader" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "nullColumnHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.NullColumnHeader" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "buildVariablesHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.BuildVariablesHeader" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "simpleColumnHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.SimpleColumnHeader" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "simpleRowHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.SimpleRowHeader" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "parametersActionHeader" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.ParametersActionHeader" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.StandardBuildCard": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "au.com.centrumsystems.hudson.plugin.buildpipeline.extension.BuildCardExtension": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standardBuildCard" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.extension.StandardBuildCard" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder": {
+      "type": "object",
+      "properties": {
+
+        "firstJob": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "au.com.centrumsystems.hudson.plugin.buildpipeline.ProjectGridBuilder": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "downstream" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.model.ProxyView": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.ViewProperty"}
+        } ,
+        "proxiedViewName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.model.ListView": {
+      "type": "object",
+      "properties": {
+
+        "columns": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.ListViewColumn"}
+        } ,
+        "includeRegex": {
+
+        "type": "string"
+      
+        } ,
+        "jobFilters": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.views.ViewJobFilter"}
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.ViewProperty"}
+        } ,
+        "recurse": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "hudson.views.StatusColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.WeatherColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.JobColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.LastSuccessColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.LastFailureColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.LastStableColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.LastDurationColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.views.BuildButtonColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.favorite.column.FavoriteColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.GitBranchSpecifierColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.mercurial.MercurialRevisionColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.branch.ItemColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.branch.DescriptionColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.branch.BranchStatusColumn": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.views.ListViewColumn": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "jobName" : { "$ref" : "#/definitions/hudson.views.JobColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "buildButton" : { "$ref" : "#/definitions/hudson.views.BuildButtonColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "favoriteColumn" : { "$ref" : "#/definitions/hudson.plugins.favorite.column.FavoriteColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurialRevisionColumn" : { "$ref" : "#/definitions/hudson.plugins.mercurial.MercurialRevisionColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "lastStable" : { "$ref" : "#/definitions/hudson.views.LastStableColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "itemColumn" : { "$ref" : "#/definitions/jenkins.branch.ItemColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "lastSuccess" : { "$ref" : "#/definitions/hudson.views.LastSuccessColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "lastDuration" : { "$ref" : "#/definitions/hudson.views.LastDurationColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitBranchSpecifierColumn" : { "$ref" : "#/definitions/hudson.plugins.git.GitBranchSpecifierColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "weather" : { "$ref" : "#/definitions/hudson.views.WeatherColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "branchStatusColumn" : { "$ref" : "#/definitions/jenkins.branch.BranchStatusColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "lastFailure" : { "$ref" : "#/definitions/hudson.views.LastFailureColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "descriptionColumn" : { "$ref" : "#/definitions/jenkins.branch.DescriptionColumn" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "status" : { "$ref" : "#/definitions/hudson.views.StatusColumn" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.favorite.filter.FavoriteFilter": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.GitHubBranchFilter": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.GitHubPullRequestFilter": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.views.ViewJobFilter": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "gitHubBranchFilter" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.GitHubBranchFilter" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "favoriteFilter" : { "$ref" : "#/definitions/hudson.plugins.favorite.filter.FavoriteFilter" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubPullRequestFilter" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.GitHubPullRequestFilter" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.model.MyView": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.ViewProperty"}
+        } 
+      }
+    }
+,
+  "hudson.model.View": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "" : { "$ref" : "#/definitions/jenkins.branch.MultiBranchProjectViewHolder$ViewImpl" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "all" : { "$ref" : "#/definitions/hudson.model.AllView" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "proxy" : { "$ref" : "#/definitions/hudson.model.ProxyView" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "myView" : { "$ref" : "#/definitions/hudson.model.MyView" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "buildPipeline" : { "$ref" : "#/definitions/au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "list" : { "$ref" : "#/definitions/hudson.model.ListView" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.ws_cleanup.DisableDeferredWipeoutNodeProperty": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.slaves.EnvironmentVariablesNodeProperty": {
+      "type": "object",
+      "properties": {
+
+        "env": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.EnvironmentVariablesNodeProperty$Entry"}
+        } 
+      }
+    }
+,
+    "hudson.slaves.EnvironmentVariablesNodeProperty$Entry": {
+      "type": "object",
+      "properties": {
+
+        "key": {
+
+        "type": "string"
+      
+        } ,
+        "value": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tools.ToolLocationNodeProperty": {
+      "type": "object",
+      "properties": {
+
+        "locations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolLocationNodeProperty$ToolLocation"}
+        } 
+      }
+    }
+,
+    "hudson.tools.ToolLocationNodeProperty$ToolLocation": {
+      "type": "object",
+      "properties": {
+
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "key": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.slaves.NodeProperty": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "disableDeferredWipeout" : { "$ref" : "#/definitions/hudson.plugins.ws_cleanup.DisableDeferredWipeoutNodeProperty" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "toolLocation" : { "$ref" : "#/definitions/hudson.tools.ToolLocationNodeProperty" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "envVars" : { "$ref" : "#/definitions/hudson.slaves.EnvironmentVariablesNodeProperty" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.model.JDK": {
+      "type": "object",
+      "properties": {
+
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "hudson.tools.InstallSourceProperty": {
+      "type": "object",
+      "properties": {
+
+        "installers": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolInstaller"}
+        } ,
+        "installers": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolInstaller"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.tools.DockerToolInstaller": {
+      "type": "object",
+      "properties": {
+
+        "label": {
+
+        "type": "string"
+      
+        } ,
+        "version": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tools.ZipExtractionInstaller": {
+      "type": "object",
+      "properties": {
+
+        "label": {
+
+        "type": "string"
+      
+        } ,
+        "subdir": {
+
+        "type": "string"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tools.JDKInstaller": {
+      "type": "object",
+      "properties": {
+
+        "acceptLicense": {
+
+        "type": "boolean"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tasks.Maven$MavenInstaller": {
+      "type": "object",
+      "properties": {
+
+        "id": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tools.BatchCommandInstaller": {
+      "type": "object",
+      "properties": {
+
+        "command": {
+
+        "type": "string"
+      
+        } ,
+        "label": {
+
+        "type": "string"
+      
+        } ,
+        "toolHome": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tools.CommandInstaller": {
+      "type": "object",
+      "properties": {
+
+        "command": {
+
+        "type": "string"
+      
+        } ,
+        "label": {
+
+        "type": "string"
+      
+        } ,
+        "toolHome": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.tools.ToolInstaller": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "zip" : { "$ref" : "#/definitions/hudson.tools.ZipExtractionInstaller" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "batchFile" : { "$ref" : "#/definitions/hudson.tools.BatchCommandInstaller" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "jdkInstaller" : { "$ref" : "#/definitions/hudson.tools.JDKInstaller" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "maven" : { "$ref" : "#/definitions/hudson.tasks.Maven$MavenInstaller" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "command" : { "$ref" : "#/definitions/hudson.tools.CommandInstaller" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "docker" : { "$ref" : "#/definitions/org.jenkinsci.plugins.docker.commons.tools.DockerToolInstaller" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+  "hudson.tools.ToolProperty": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "installSource" : { "$ref" : "#/definitions/hudson.tools.InstallSourceProperty" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.ProjectNamingStrategy$PatternProjectNamingStrategy": {
+      "type": "object",
+      "properties": {
+
+        "description": {
+
+        "type": "string"
+      
+        } ,
+        "forceExistingJobs": {
+
+        "type": "boolean"
+      
+        } ,
+        "namePattern": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "jenkins.model.ProjectNamingStrategy": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "pattern" : { "$ref" : "#/definitions/jenkins.model.ProjectNamingStrategy$PatternProjectNamingStrategy" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.security.csrf.DefaultCrumbIssuer": {
+      "type": "object",
+      "properties": {
+
+        "excludeClientIPFromCrumb": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+  "hudson.security.csrf.CrumbIssuer": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/hudson.security.csrf.DefaultCrumbIssuer" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.markup.EscapedMarkupFormatter": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.markup.RawHtmlMarkupFormatter": {
+      "type": "object",
+      "properties": {
+
+        "disableSyntaxHighlighting": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+  "hudson.markup.MarkupFormatter": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "rawHtml" : { "$ref" : "#/definitions/hudson.markup.RawHtmlMarkupFormatter" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "plainText" : { "$ref" : "#/definitions/hudson.markup.EscapedMarkupFormatter" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.security.LegacySecurityRealm": {
+      "type": "object",
+      "properties": {
+
+        "captchaSupport": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.captcha.CaptchaSupport"
+        } 
+      }
+    }
+,
+  "hudson.security.captcha.CaptchaSupport": {
+    "type": "object"
+    
+  }
+,
+    "hudson.security.HudsonPrivateSecurityRealm": {
+      "type": "object",
+      "properties": {
+
+        "allowsSignup": {
+
+        "type": "boolean"
+      
+        } ,
+        "captchaSupport": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.security.captcha.CaptchaSupport"
+        } ,
+        "enableCaptcha": {
+
+        "type": "boolean"
+      
+        } ,
+        "users": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/io.jenkins.plugins.casc.core.HudsonPrivateSecurityRealmConfigurator$UserWithPassword"}
+        } 
+      }
+    }
+,
+    "io.jenkins.plugins.casc.core.HudsonPrivateSecurityRealmConfigurator$UserWithPassword": {
+      "type": "object",
+      "properties": {
+
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "password": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.security.SecurityRealm": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "legacy" : { "$ref" : "#/definitions/hudson.security.LegacySecurityRealm" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "local" : { "$ref" : "#/definitions/hudson.security.HudsonPrivateSecurityRealm" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.views.DefaultMyViewsTabBar": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.views.MyViewsTabBar": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/hudson.views.DefaultMyViewsTabBar" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.model.UpdateCenter": {
+      "type": "object",
+      "properties": {
+
+        "sites": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.UpdateSite"}
+        } 
+      }
+    }
+,
+    "hudson.model.UpdateSite": {
+      "type": "object",
+      "properties": {
+
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.views.DefaultViewsTabBar": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.views.ViewsTabBar": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/hudson.views.DefaultViewsTabBar" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.ProxyConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "noProxyHost": {
+
+        "type": "string"
+      
+        } ,
+        "password": {
+
+        "type": "string"
+      
+        } ,
+        "port": {
+
+        "type": "integer"
+      
+        } ,
+        "testUrl": {
+
+        "type": "string"
+      
+        } ,
+        "userName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.slaves.DumbSlave": {
+      "type": "object",
+      "properties": {
+
+        "labelString": {
+
+        "type": "string"
+      
+        } ,
+        "launcher": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.ComputerLauncher"
+        } ,
+        "mode": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "NORMAL",
+          "EXCLUSIVE"
+        ]
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "nodeDescription": {
+
+        "type": "string"
+      
+        } ,
+        "nodeName": {
+
+        "type": "string"
+      
+        } ,
+        "nodeProperties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.NodeProperty"}
+        } ,
+        "numExecutors": {
+
+        "type": "integer"
+      
+        } ,
+        "remoteFS": {
+
+        "type": "string"
+      
+        } ,
+        "retentionStrategy": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.slaves.RetentionStrategy"
+        } ,
+        "userId": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.slaves.RetentionStrategy$Always": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.slaves.SimpleScheduledRetentionStrategy": {
+      "type": "object",
+      "properties": {
+
+        "keepUpWhenActive": {
+
+        "type": "boolean"
+      
+        } ,
+        "startTimeSpec": {
+
+        "type": "string"
+      
+        } ,
+        "upTimeMins": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "hudson.slaves.RetentionStrategy$Demand": {
+      "type": "object",
+      "properties": {
+
+        "idleDelay": {
+
+        "type": "integer"
+      
+        } ,
+        "inDemandDelay": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+  "hudson.slaves.RetentionStrategy": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "always" : { "$ref" : "#/definitions/hudson.slaves.RetentionStrategy$Always" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "schedule" : { "$ref" : "#/definitions/hudson.slaves.SimpleScheduledRetentionStrategy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "demand" : { "$ref" : "#/definitions/hudson.slaves.RetentionStrategy$Demand" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.slaves.JNLPLauncher": {
+      "type": "object",
+      "properties": {
+
+        "tunnel": {
+
+        "type": "string"
+      
+        } ,
+        "vmargs": {
+
+        "type": "string"
+      
+        } ,
+        "workDirSettings": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.slaves.RemotingWorkDirSettings"
+        } 
+      }
+    }
+,
+    "jenkins.slaves.RemotingWorkDirSettings": {
+      "type": "object",
+      "properties": {
+
+        "disabled": {
+
+        "type": "boolean"
+      
+        } ,
+        "failIfWorkDirIsMissing": {
+
+        "type": "boolean"
+      
+        } ,
+        "internalDir": {
+
+        "type": "string"
+      
+        } ,
+        "workDirPath": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.slaves.CommandLauncher": {
+      "type": "object",
+      "properties": {
+
+        "command": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.slaves.ComputerLauncher": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "jnlp" : { "$ref" : "#/definitions/hudson.slaves.JNLPLauncher" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "command" : { "$ref" : "#/definitions/hudson.slaves.CommandLauncher" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+  "hudson.model.Node": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "permanent" : { "$ref" : "#/definitions/hudson.slaves.DumbSlave" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "jenkins" : { "$ref" : "#/definitions/jenkins.model.Jenkins" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.security.s2m.AdminWhitelistRule": {
+      "type": "object",
+      "properties": {
+
+        "enabled": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "io.jenkins.plugins.casc.support.jobdsl.FromFileScriptSource": { "type": "string" }
+,
+    "io.jenkins.plugins.casc.support.jobdsl.FromUrlScriptSource": { "type": "string" }
+,
+    "io.jenkins.plugins.casc.support.jobdsl.InlineGroovyScriptSource": { "type": "string" }
+,
+  "javaposse.jobdsl.plugin.casc.ScriptSource": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "file" : { "$ref" : "#/definitions/javaposse.jobdsl.plugin.casc.FromFileScriptSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "script" : { "$ref" : "#/definitions/javaposse.jobdsl.plugin.casc.InlineGroovyScriptSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "url" : { "$ref" : "#/definitions/javaposse.jobdsl.plugin.casc.FromUrlScriptSource" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderManager$Configuration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsTypeFilter$None": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsTypeFilter$Excludes": {
+      "type": "object",
+      "properties": {
+
+        "classNames": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsTypeFilter$Includes": {
+      "type": "object",
+      "properties": {
+
+        "classNames": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } 
+      }
+    }
+,
+  "com.cloudbees.plugins.credentials.CredentialsTypeFilter": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "excludes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsTypeFilter$Excludes" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "includes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsTypeFilter$Includes" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "none" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsTypeFilter$None" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderTypeRestriction$Excludes": {
+      "type": "object",
+      "properties": {
+
+        "provider": {
+
+        "type": "string"
+      
+        } ,
+        "type": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderTypeRestriction$Includes": {
+      "type": "object",
+      "properties": {
+
+        "provider": {
+
+        "type": "string"
+      
+        } ,
+        "type": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "com.cloudbees.plugins.credentials.CredentialsProviderTypeRestriction": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "excludes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderTypeRestriction$Excludes" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "includes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderTypeRestriction$Includes" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderFilter$None": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderFilter$Excludes": {
+      "type": "object",
+      "properties": {
+
+        "classNames": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } 
+      }
+    }
+,
+    "com.cloudbees.plugins.credentials.CredentialsProviderFilter$Includes": {
+      "type": "object",
+      "properties": {
+
+        "classNames": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } 
+      }
+    }
+,
+  "com.cloudbees.plugins.credentials.CredentialsProviderFilter": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "excludes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderFilter$Excludes" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "includes" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderFilter$Includes" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "none" : { "$ref" : "#/definitions/com.cloudbees.plugins.credentials.CredentialsProviderFilter$None" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.model.DownloadSettings": {
+      "type": "object",
+      "properties": {
+
+        "useBrowser": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "hudson.security.csrf.GlobalCrumbIssuerConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.security.apitoken.ApiTokenPropertyConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "creationOfLegacyTokenEnabled": {
+
+        "type": "boolean"
+      
+        } ,
+        "tokenGenerationOnCreationEnabled": {
+
+        "type": "boolean"
+      
+        } ,
+        "usageStatisticsEnabled": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "jenkins.security.QueueItemAuthenticatorConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "authenticators": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.security.QueueItemAuthenticator"}
+        } 
+      }
+    }
+,
+  "jenkins.security.QueueItemAuthenticator": {
+    "type": "object"
+    
+  }
+,
+    "jenkins.security.UpdateSiteWarningsConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "javaposse.jobdsl.plugin.GlobalJobDslSecurityConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "useScriptSecurity": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "jenkins.security.s2m.MasterKillSwitchConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.main.modules.sshd.SSHD": {
+      "type": "object",
+      "properties": {
+
+        "port": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketEndpointConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "endpoints": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.endpoints.AbstractBitbucketEndpoint"}
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketCloudEndpoint": {
+      "type": "object",
+      "properties": {
+
+        "bitbucketJenkinsRootUrl": {
+
+        "type": "string"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "enableCache": {
+
+        "type": "boolean"
+      
+        } ,
+        "manageHooks": {
+
+        "type": "boolean"
+      
+        } ,
+        "repositoriesCacheDuration": {
+
+        "type": "integer"
+      
+        } ,
+        "teamCacheDuration": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketServerEndpoint": {
+      "type": "object",
+      "properties": {
+
+        "bitbucketJenkinsRootUrl": {
+
+        "type": "string"
+      
+        } ,
+        "callCanMerge": {
+
+        "type": "boolean"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "displayName": {
+
+        "type": "string"
+      
+        } ,
+        "manageHooks": {
+
+        "type": "boolean"
+      
+        } ,
+        "serverUrl": {
+
+        "type": "string"
+      
+        } ,
+        "webhookImplementation": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "PLUGIN",
+          "NATIVE"
+        ]
+      
+        } 
+      }
+    }
+,
+  "com.cloudbees.jenkins.plugins.bitbucket.endpoints.AbstractBitbucketEndpoint": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "bitbucketServerEndpoint" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketServerEndpoint" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitbucketCloudEndpoint" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.endpoints.BitbucketCloudEndpoint" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "org.jenkinsci.plugins.conditionalbuildstep.singlestep.SingleConditionalBuilder$SingleConditionalBuilderDescriptor": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.workflow.libs.GlobalLibraries": {
+      "type": "object",
+      "properties": {
+
+        "libraries": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.workflow.libs.LibraryConfiguration"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.workflow.libs.LibraryConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "allowVersionOverride": {
+
+        "type": "boolean"
+      
+        } ,
+        "defaultVersion": {
+
+        "type": "string"
+      
+        } ,
+        "implicit": {
+
+        "type": "boolean"
+      
+        } ,
+        "includeInChangesets": {
+
+        "type": "boolean"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "retriever": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.workflow.libs.LibraryRetriever"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.workflow.libs.SCMSourceRetriever": {
+      "type": "object",
+      "properties": {
+
+        "scm": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.SCMSource"
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.BitbucketSCMSource": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "repoOwner": {
+
+        "type": "string"
+      
+        } ,
+        "repository": {
+
+        "type": "string"
+      
+        } ,
+        "serverUrl": {
+
+        "type": "string"
+      
+        } ,
+        "traits": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMSourceTrait"}
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.CheckoutOptionTrait": {
+      "type": "object",
+      "properties": {
+
+        "extension": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.impl.CheckoutOption"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.CheckoutOption": {
+      "type": "object",
+      "properties": {
+
+        "timeout": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.CloneOptionTrait": {
+      "type": "object",
+      "properties": {
+
+        "extension": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.impl.CloneOption"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.CloneOption": {
+      "type": "object",
+      "properties": {
+
+        "depth": {
+
+        "type": "integer"
+      
+        } ,
+        "honorRefspec": {
+
+        "type": "boolean"
+      
+        } ,
+        "noTags": {
+
+        "type": "boolean"
+      
+        } ,
+        "reference": {
+
+        "type": "string"
+      
+        } ,
+        "shallow": {
+
+        "type": "boolean"
+      
+        } ,
+        "timeout": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.SubmoduleOptionTrait": {
+      "type": "object",
+      "properties": {
+
+        "extension": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.impl.SubmoduleOption"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.SubmoduleOption": {
+      "type": "object",
+      "properties": {
+
+        "disableSubmodules": {
+
+        "type": "boolean"
+      
+        } ,
+        "parentCredentials": {
+
+        "type": "boolean"
+      
+        } ,
+        "recursiveSubmodules": {
+
+        "type": "boolean"
+      
+        } ,
+        "reference": {
+
+        "type": "string"
+      
+        } ,
+        "timeout": {
+
+        "type": "integer"
+      
+        } ,
+        "trackingSubmodules": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.LocalBranchTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.SSHCheckoutTrait": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.SSHCheckoutTrait": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.traits.CleanMercurialSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.CleanAfterCheckoutTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.CleanBeforeCheckoutTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.GitBrowserSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "browser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.browser.GitRepositoryBrowser"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.AssemblaWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.FisheyeGitRepositoryBrowser": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.KilnGit": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.TFS2013GitRepositoryBrowser": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.BitBucket": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.BitbucketWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.CGit": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.FishEye": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GitBlitRepositoryBrowser": {
+      "type": "object",
+      "properties": {
+
+        "projectName": {
+
+        "type": "string"
+      
+        } ,
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GithubWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.Gitiles": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GitLab": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } ,
+        "version": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GitList": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GitoriousWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GitWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.GogsGit": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.GoogleCode": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.HgWeb": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.Kallithea": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.KilnHG": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.Phabricator": {
+      "type": "object",
+      "properties": {
+
+        "repo": {
+
+        "type": "string"
+      
+        } ,
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.RedmineWeb": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.RhodeCode": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.RhodeCode": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.browser.RhodeCodeLegacy": {
+      "type": "object",
+      "properties": {
+
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.Stash": {
+      "type": "object",
+      "properties": {
+
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.browser.ViewGitWeb": {
+      "type": "object",
+      "properties": {
+
+        "projectName": {
+
+        "type": "string"
+      
+        } ,
+        "repoUrl": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.plugins.git.browser.GitRepositoryBrowser": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "gitiles" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Gitiles" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.CGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitList" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitList" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitBucket" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.BitBucket" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "viewGitWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.ViewGitWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "redmineWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.RedmineWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitbucketWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.BitbucketWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kilnHG" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.KilnHG" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "fishEye" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.FishEye" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitLab" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitLab" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "rhodeCode" : { "$ref" : "#/definitions/hudson.plugins.git.browser.RhodeCode" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kilnGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.KilnGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitBlitRepositoryBrowser" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitBlitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitoriousWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitoriousWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "tfs2013" : { "$ref" : "#/definitions/hudson.plugins.git.browser.TFS2013GitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "rhodeCodeLegacy" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.RhodeCodeLegacy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "phabricator" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Phabricator" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "googleCode" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.GoogleCode" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gogsGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GogsGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "fisheye" : { "$ref" : "#/definitions/hudson.plugins.git.browser.FisheyeGitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kallithea" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.Kallithea" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "githubWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GithubWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "hgWeb" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.HgWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "assemblaWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.AssemblaWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "stash" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Stash" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.mercurial.traits.MercurialBrowserSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "browser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.mercurial.browser.HgBrowser"
+        } 
+      }
+    }
+,
+  "hudson.plugins.mercurial.browser.HgBrowser": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "gitiles" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Gitiles" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "tFS2013GitRepositoryBrowser" : { "$ref" : "#/definitions/hudson.plugins.git.browser.TFS2013GitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.CGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitList" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitList" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitBucket" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.BitBucket" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "viewGitWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.ViewGitWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "redmineWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.RedmineWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitbucketWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.BitbucketWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kilnHG" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.KilnHG" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "fishEye" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.FishEye" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitLab" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitLab" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "rhodeCode" : { "$ref" : "#/definitions/hudson.plugins.git.browser.RhodeCode" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kilnGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.KilnGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitBlitRepositoryBrowser" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitBlitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitoriousWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GitoriousWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "rhodeCodeLegacy" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.RhodeCodeLegacy" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "phabricator" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Phabricator" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "googleCode" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.GoogleCode" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gogsGit" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GogsGit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "kallithea" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.Kallithea" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "fisheyeGitRepositoryBrowser" : { "$ref" : "#/definitions/hudson.plugins.git.browser.FisheyeGitRepositoryBrowser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "githubWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.GithubWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "hgWeb" : { "$ref" : "#/definitions/hudson.plugins.mercurial.browser.HgWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "assemblaWeb" : { "$ref" : "#/definitions/hudson.plugins.git.browser.AssemblaWeb" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "stash" : { "$ref" : "#/definitions/hudson.plugins.git.browser.Stash" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.plugins.git.traits.RemoteNameSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "remoteName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.UserIdentityTrait": {
+      "type": "object",
+      "properties": {
+
+        "extension": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.impl.UserIdentity"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.UserIdentity": {
+      "type": "object",
+      "properties": {
+
+        "email": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.BranchDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.BranchDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.BranchDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.DiscoverOtherRefsTrait": {
+      "type": "object",
+      "properties": {
+
+        "nameMapping": {
+
+        "type": "string"
+      
+        } ,
+        "ref": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } ,
+        "trust": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMHeadAuthority"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustContributors": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustEveryone": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustEveryone": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustTeamForks": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustNobody": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustNobody": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "jenkins.scm.api.trait.SCMHeadAuthority": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "trustNobody" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustNobody" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubTrustNobody" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustNobody" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "originChangeRequest" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.OriginPullRequestDiscoveryTrait$OriginChangeRequestSCMHeadAuthority" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubTrustEveryone" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustEveryone" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "trustEveryone" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustEveryone" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubTrustPermissions" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustPermission" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "tag" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.TagDiscoveryTrait$TagSCMHeadAuthority" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubBranchHeadAuthority" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.BranchDiscoveryTrait$BranchSCMHeadAuthority" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubTrustContributors" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait$TrustContributors" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "branch" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.BranchDiscoveryTrait$BranchSCMHeadAuthority" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "trustTeamForks" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait$TrustTeamForks" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } ,
+        "trust": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMHeadAuthority"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.OriginPullRequestDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.OriginPullRequestDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+        "strategyId": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.TagDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.TagDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.TagDiscoveryTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.PublicRepoPullRequestFilterTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.scm.impl.trait.RegexSCMHeadFilterTrait": {
+      "type": "object",
+      "properties": {
+
+        "regex": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.scm.impl.trait.WildcardSCMHeadFilterTrait": {
+      "type": "object",
+      "properties": {
+
+        "excludes": {
+
+        "type": "string"
+      
+        } ,
+        "includes": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.GitLFSPullTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.IgnoreOnPushNotificationTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.WebhookRegistrationTrait": {
+      "type": "object",
+      "properties": {
+
+        "mode": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.PruneStaleBranchTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.GitToolSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "gitTool": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.traits.MercurialInstallationSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "installation": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "com.cloudbees.jenkins.plugins.bitbucket.WebhookConfigurationTrait": {
+      "type": "object",
+      "properties": {
+
+        "committersToIgnore": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.RefSpecsSCMSourceTrait": {
+      "type": "object",
+      "properties": {
+
+        "templates": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.plugins.git.traits.RefSpecsSCMSourceTrait$RefSpecTemplate"}
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.RefSpecsSCMSourceTrait$RefSpecTemplate": {
+      "type": "object",
+      "properties": {
+
+        "value": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.git.traits.AuthorInChangelogTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.git.traits.WipeWorkspaceTrait": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "jenkins.scm.api.trait.SCMSourceTrait": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "tagDiscoveryTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.TagDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "webhookRegistrationTrait" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.WebhookRegistrationTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitLFSPullTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.GitLFSPullTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "webhookConfigurationTrait" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.WebhookConfigurationTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "ignoreOnPushNotificationTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.IgnoreOnPushNotificationTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cleanMercurial" : { "$ref" : "#/definitions/hudson.plugins.mercurial.traits.CleanMercurialSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cloneOptionTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.CloneOptionTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "submoduleOptionTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.SubmoduleOptionTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitTool" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.GitToolSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "wipeWorkspaceTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.WipeWorkspaceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "branchDiscoveryTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.BranchDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "localBranchTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.LocalBranchTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cleanBeforeCheckoutTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.CleanBeforeCheckoutTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubBranchDiscovery" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.BranchDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "discoverOtherRefsTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.DiscoverOtherRefsTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "sSHCheckoutTrait" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.SSHCheckoutTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cleanAfterCheckoutTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.CleanAfterCheckoutTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "pruneStaleBranchTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.PruneStaleBranchTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubForkDiscovery" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.ForkPullRequestDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubSshCheckout" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.SSHCheckoutTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitBrowser" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.GitBrowserSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "refSpecs" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.RefSpecsSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurialInstallation" : { "$ref" : "#/definitions/hudson.plugins.mercurial.traits.MercurialInstallationSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "userIdentityTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.UserIdentityTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "headWildcardFilter" : { "$ref" : "#/definitions/jenkins.scm.impl.trait.WildcardSCMHeadFilterTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitHubTagDiscovery" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.TagDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "authorInChangelogTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.AuthorInChangelogTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurialBrowser" : { "$ref" : "#/definitions/hudson.plugins.mercurial.traits.MercurialBrowserSCMSourceTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "forkPullRequestDiscoveryTrait" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.ForkPullRequestDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "checkoutOptionTrait" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.CheckoutOptionTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "publicRepoPullRequestFilterTrait" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.PublicRepoPullRequestFilterTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "originPullRequestDiscoveryTrait" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.OriginPullRequestDiscoveryTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "headRegexFilter" : { "$ref" : "#/definitions/jenkins.scm.impl.trait.RegexSCMHeadFilterTrait" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "remoteName" : { "$ref" : "#/definitions/jenkins.plugins.git.traits.RemoteNameSCMSourceTrait" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.plugins.git.GitSCMSource": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "remote": {
+
+        "type": "string"
+      
+        } ,
+        "traits": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMSourceTrait"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.ChangelogToBranch": {
+      "type": "object",
+      "properties": {
+
+        "options": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.ChangelogToBranchOptions"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.ChangelogToBranchOptions": {
+      "type": "object",
+      "properties": {
+
+        "compareRemote": {
+
+        "type": "string"
+      
+        } ,
+        "compareTarget": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.RelativeTargetDirectory": {
+      "type": "object",
+      "properties": {
+
+        "relativeTargetDir": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.LocalBranch": {
+      "type": "object",
+      "properties": {
+
+        "localBranch": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.CleanCheckout": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.CleanBeforeCheckout": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.PerBuildTag": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.ScmName": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.IgnoreNotifyCommit": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.DisableRemotePoll": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.GitLFSPull": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.PreBuildMerge": {
+      "type": "object",
+      "properties": {
+
+        "options": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.UserMergeOptions"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.UserMergeOptions": {
+      "type": "object",
+      "properties": {
+
+        "fastForwardMode": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "--ff",
+          "--ff-only",
+          "--no-ff"
+        ]
+      
+        } ,
+        "mergeRemote": {
+
+        "type": "string"
+      
+        } ,
+        "mergeStrategy": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "default",
+          "resolve",
+          "recursive",
+          "octopus",
+          "ours",
+          "subtree",
+          "recursive_theirs"
+        ]
+      
+        } ,
+        "mergeTarget": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.UserExclusion": {
+      "type": "object",
+      "properties": {
+
+        "excludedUsers": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.PathRestriction": {
+      "type": "object",
+      "properties": {
+
+        "excludedRegions": {
+
+        "type": "string"
+      
+        } ,
+        "includedRegions": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.MessageExclusion": {
+      "type": "object",
+      "properties": {
+
+        "excludedMessage": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.PruneStaleBranch": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.SparseCheckoutPaths": {
+      "type": "object",
+      "properties": {
+
+        "sparseCheckoutPaths": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.impl.SparseCheckoutPath"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.SparseCheckoutPath": {
+      "type": "object",
+      "properties": {
+
+        "path": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.BuildChooserSetting": {
+      "type": "object",
+      "properties": {
+
+        "buildChooser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.util.BuildChooser"
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.util.AncestryBuildChooser": {
+      "type": "object",
+      "properties": {
+
+        "ancestorCommitSha1": {
+
+        "type": "string"
+      
+        } ,
+        "maximumAgeInDays": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.util.DefaultBuildChooser": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.util.InverseBuildChooser": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.plugins.git.util.BuildChooser": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "inverse" : { "$ref" : "#/definitions/hudson.plugins.git.util.InverseBuildChooser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "default" : { "$ref" : "#/definitions/hudson.plugins.git.util.DefaultBuildChooser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "ancestry" : { "$ref" : "#/definitions/hudson.plugins.git.util.AncestryBuildChooser" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "specificRevision" : { "$ref" : "#/definitions/jenkins.plugins.git.AbstractGitSCMSource$SpecificRevisionBuildChooser" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.git.extensions.impl.AuthorInChangelog": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.extensions.impl.WipeWorkspace": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.plugins.git.extensions.GitSCMExtension": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "buildChooserSetting" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.BuildChooserSetting" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "preBuildMerge" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.PreBuildMerge" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "gitLFSPull" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.GitLFSPull" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cleanCheckout" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.CleanCheckout" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "changelogToBranch" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.ChangelogToBranch" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "pathRestriction" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.PathRestriction" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "scmName" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.ScmName" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "authorInChangelog" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.AuthorInChangelog" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "checkoutOption" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.CheckoutOption" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "userIdentity" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.UserIdentity" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cloneOption" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.CloneOption" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "disableRemotePoll" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.DisableRemotePoll" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "relativeTargetDirectory" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.RelativeTargetDirectory" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "cleanBeforeCheckout" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.CleanBeforeCheckout" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "ignoreNotifyCommit" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.IgnoreNotifyCommit" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "messageExclusion" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.MessageExclusion" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "wipeWorkspace" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.WipeWorkspace" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "userExclusion" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.UserExclusion" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "pruneStaleBranch" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.PruneStaleBranch" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "submoduleOption" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.SubmoduleOption" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "sparseCheckoutPaths" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.SparseCheckoutPaths" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "perBuildTag" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.PerBuildTag" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "localBranch" : { "$ref" : "#/definitions/hudson.plugins.git.extensions.impl.LocalBranch" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "org.jenkinsci.plugins.github_branch_source.GitHubSCMSource": {
+      "type": "object",
+      "properties": {
+
+        "apiUri": {
+
+        "type": "string"
+      
+        } ,
+        "configuredByUrl": {
+
+        "type": "boolean"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "repoOwner": {
+
+        "type": "string"
+      
+        } ,
+        "repository": {
+
+        "type": "string"
+      
+        } ,
+        "repositoryUrl": {
+
+        "type": "string"
+      
+        } ,
+        "traits": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMSourceTrait"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.MercurialSCMSource": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "source": {
+
+        "type": "string"
+      
+        } ,
+        "traits": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMSourceTrait"}
+        } 
+      }
+    }
+,
+    "jenkins.scm.impl.SingleSCMSource": {
+      "type": "object",
+      "properties": {
+
+        "id": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "scm": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.scm.SCM"
+        } ,
+        "traits": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.scm.api.trait.SCMSourceTrait"}
+        } 
+      }
+    }
+,
+    "hudson.scm.NullSCM": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.git.GitSCM": {
+      "type": "object",
+      "properties": {
+
+        "branches": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.BranchSpec"}
+        } ,
+        "browser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.browser.GitRepositoryBrowser"
+        } ,
+        "buildChooser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.util.BuildChooser"
+        } ,
+        "doGenerateSubmoduleConfigurations": {
+
+        "type": "boolean"
+      
+        } ,
+        "extensions": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.GitSCMExtension"}
+        } ,
+        "extensions": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.extensions.GitSCMExtension"}
+        } ,
+        "gitTool": {
+
+        "type": "string"
+      
+        } ,
+        "submoduleCfg": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.SubmoduleConfig"}
+        } ,
+        "userRemoteConfigs": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.UserRemoteConfig"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.SubmoduleConfig": {
+      "type": "object",
+      "properties": {
+
+        "branches": {
+
+          "type": "array",
+          "items": {
+
+        "type": "string"
+      }
+        } ,
+        "submoduleName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.UserRemoteConfig": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "refspec": {
+
+        "type": "string"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.BranchSpec": {
+      "type": "object",
+      "properties": {
+
+        "name": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.MercurialSCM": {
+      "type": "object",
+      "properties": {
+
+        "browser": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.mercurial.browser.HgBrowser"
+        } ,
+        "clean": {
+
+        "type": "boolean"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "disableChangeLog": {
+
+        "type": "boolean"
+      
+        } ,
+        "installation": {
+
+        "type": "string"
+      
+        } ,
+        "modules": {
+
+        "type": "string"
+      
+        } ,
+        "revision": {
+
+        "type": "string"
+      
+        } ,
+        "revisionType": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "BRANCH",
+          "TAG",
+          "CHANGESET",
+          "REVSET"
+        ]
+      
+        } ,
+        "source": {
+
+        "type": "string"
+      
+        } ,
+        "subdir": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "hudson.scm.SCM": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "git" : { "$ref" : "#/definitions/hudson.plugins.git.GitSCM" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurial" : { "$ref" : "#/definitions/hudson.plugins.mercurial.MercurialSCM" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "none" : { "$ref" : "#/definitions/hudson.scm.NullSCM" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+  "jenkins.scm.api.SCMSource": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "fromScm" : { "$ref" : "#/definitions/jenkins.scm.impl.SingleSCMSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "github" : { "$ref" : "#/definitions/org.jenkinsci.plugins.github_branch_source.GitHubSCMSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "git" : { "$ref" : "#/definitions/jenkins.plugins.git.GitSCMSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurial" : { "$ref" : "#/definitions/hudson.plugins.mercurial.MercurialSCMSource" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "bitbucket" : { "$ref" : "#/definitions/com.cloudbees.jenkins.plugins.bitbucket.BitbucketSCMSource" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "org.jenkinsci.plugins.workflow.libs.SCMRetriever": {
+      "type": "object",
+      "properties": {
+
+        "scm": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.scm.SCM"
+        } 
+      }
+    }
+,
+  "org.jenkinsci.plugins.workflow.libs.LibraryRetriever": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "modernSCM" : { "$ref" : "#/definitions/org.jenkinsci.plugins.workflow.libs.SCMSourceRetriever" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "legacySCM" : { "$ref" : "#/definitions/org.jenkinsci.plugins.workflow.libs.SCMRetriever" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.build_timeout.operations.BuildStepOperation$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "enabled": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "net.uaznia.lukanus.hudson.plugins.gitparameter.GitParameterDefinition$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.GlobalNodePropertiesConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.github.config.GitHubPluginConfig": {
+      "type": "object",
+      "properties": {
+
+        "configs": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.github.config.GitHubServerConfig"}
+        } ,
+        "hookSecretConfig": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.github.config.HookSecretConfig"
+        } ,
+        "hookUrl": {
+"type":  "object",
+        "$ref": "#/definitions/java.net.URL"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github.config.GitHubServerConfig": {
+      "type": "object",
+      "properties": {
+
+        "apiUrl": {
+
+        "type": "string"
+      
+        } ,
+        "clientCacheSize": {
+
+        "type": "integer"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "manageHooks": {
+
+        "type": "boolean"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github.config.HookSecretConfig": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.GitHubConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "endpoints": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.github_branch_source.Endpoint"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.github_branch_source.Endpoint": {
+      "type": "object",
+      "properties": {
+
+        "apiUri": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.model.GlobalCloudConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.GlobalQuietPeriodConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkins.plugins.lockableresources.LockableResourcesManager": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.model.UsageStatistics": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.triggers.SCMTrigger$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "pollingThreadCount": {
+
+        "type": "integer"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.timestamper.TimestamperConfig": {
+      "type": "object",
+      "properties": {
+
+        "allPipelines": {
+
+        "type": "boolean"
+      
+        } ,
+        "elapsedTimeFormat": {
+
+        "type": "string"
+      
+        } ,
+        "systemTimeFormat": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.slack.SlackNotifier$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "baseUrl": {
+
+        "type": "string"
+      
+        } ,
+        "botUser": {
+
+        "type": "boolean"
+      
+        } ,
+        "iconEmoji": {
+
+        "type": "string"
+      
+        } ,
+        "room": {
+
+        "type": "string"
+      
+        } ,
+        "sendAs": {
+
+        "type": "string"
+      
+        } ,
+        "sendAsText": {
+
+        "type": "boolean"
+      
+        } ,
+        "slackUserIdResolver": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.plugins.slack.user.SlackUserIdResolver"
+        } ,
+        "teamDomain": {
+
+        "type": "string"
+      
+        } ,
+        "tokenCredentialId": {
+
+        "type": "string"
+      
+        } ,
+        "username": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.plugins.slack.user.NoSlackUserIdResolver": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.plugins.slack.user.EmailSlackUserIdResolver": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "jenkins.plugins.slack.user.SlackUserIdResolver": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "no" : { "$ref" : "#/definitions/jenkins.plugins.slack.user.NoSlackUserIdResolver" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "email" : { "$ref" : "#/definitions/jenkins.plugins.slack.user.EmailSlackUserIdResolver" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.management.AdministrativeMonitorsConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.MasterBuildConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.GlobalProjectNamingStrategyConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.plugins.jira.JiraGlobalConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "sites": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.jira.JiraSite"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.jira.JiraSite": {
+      "type": "object",
+      "properties": {
+
+        "alternativeUrl": {
+
+        "type": "string"
+      
+        } ,
+        "appendChangeTimestamp": {
+
+        "type": "boolean"
+      
+        } ,
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "dateTimePattern": {
+
+        "type": "string"
+      
+        } ,
+        "disableChangelogAnnotations": {
+
+        "type": "boolean"
+      
+        } ,
+        "groupVisibility": {
+
+        "type": "string"
+      
+        } ,
+        "readTimeout": {
+
+        "type": "integer"
+      
+        } ,
+        "recordScmChanges": {
+
+        "type": "boolean"
+      
+        } ,
+        "roleVisibility": {
+
+        "type": "string"
+      
+        } ,
+        "supportsWikiStyleComment": {
+
+        "type": "boolean"
+      
+        } ,
+        "threadExecutorNumber": {
+
+        "type": "integer"
+      
+        } ,
+        "timeout": {
+
+        "type": "integer"
+      
+        } ,
+        "updateJiraIssueForAllStatus": {
+
+        "type": "boolean"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } ,
+        "useHTTPAuth": {
+
+        "type": "boolean"
+      
+        } ,
+        "userPattern": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.views.MyViewsTabBar$GlobalConfigurationImpl": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.pipeline.modeldefinition.config.GlobalConfig": {
+      "type": "object",
+      "properties": {
+
+        "dockerLabel": {
+
+        "type": "string"
+      
+        } ,
+        "registry": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.docker.commons.credentials.DockerRegistryEndpoint"
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.credentials.DockerRegistryEndpoint": {
+      "type": "object",
+      "properties": {
+
+        "credentialsId": {
+
+        "type": "string"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.maven.MavenModuleSet$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "globalMavenOpts": {
+
+        "type": "string"
+      
+        } ,
+        "localRepository": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.maven.local_repo.LocalRepositoryLocator"
+        } 
+      }
+    }
+,
+    "hudson.maven.local_repo.DefaultLocalRepositoryLocator": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.maven.local_repo.PerExecutorLocalRepositoryLocator": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.maven.local_repo.PerJobLocalRepositoryLocator": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+  "hudson.maven.local_repo.LocalRepositoryLocator": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "perExecutor" : { "$ref" : "#/definitions/hudson.maven.local_repo.PerExecutorLocalRepositoryLocator" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "default" : { "$ref" : "#/definitions/hudson.maven.local_repo.DefaultLocalRepositoryLocator" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "perJob" : { "$ref" : "#/definitions/hudson.maven.local_repo.PerJobLocalRepositoryLocator" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "jenkins.model.GlobalSCMRetryCountConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "io.jenkins.plugins.casc.CasCGlobalConfig": {
+      "type": "object",
+      "properties": {
+
+        "configurationPath": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.emailext.ExtendedEmailPublisherDescriptor": {
+      "type": "object",
+      "properties": {
+
+        "addAccounts": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.emailext.MailAccount"}
+        } ,
+        "adminRequiredForTemplateTesting": {
+
+        "type": "boolean"
+      
+        } ,
+        "advProperties": {
+
+        "type": "string"
+      
+        } ,
+        "allowUnregisteredEnabled": {
+
+        "type": "boolean"
+      
+        } ,
+        "allowedDomains": {
+
+        "type": "string"
+      
+        } ,
+        "charset": {
+
+        "type": "string"
+      
+        } ,
+        "debugMode": {
+
+        "type": "boolean"
+      
+        } ,
+        "defaultBody": {
+
+        "type": "string"
+      
+        } ,
+        "defaultClasspath": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.emailext.GroovyScriptPath"}
+        } ,
+        "defaultContentType": {
+
+        "type": "string"
+      
+        } ,
+        "defaultPostsendScript": {
+
+        "type": "string"
+      
+        } ,
+        "defaultPresendScript": {
+
+        "type": "string"
+      
+        } ,
+        "defaultRecipients": {
+
+        "type": "string"
+      
+        } ,
+        "defaultReplyTo": {
+
+        "type": "string"
+      
+        } ,
+        "defaultSubject": {
+
+        "type": "string"
+      
+        } ,
+        "defaultSuffix": {
+
+        "type": "string"
+      
+        } ,
+        "excludedCommitters": {
+
+        "type": "string"
+      
+        } ,
+        "listId": {
+
+        "type": "string"
+      
+        } ,
+        "maxAttachmentSize": {
+
+        "type": "integer"
+      
+        } ,
+        "maxAttachmentSizeMb": {
+
+        "type": "integer"
+      
+        } ,
+        "precedenceBulk": {
+
+        "type": "boolean"
+      
+        } ,
+        "smtpPassword": {
+
+        "type": "string"
+      
+        } ,
+        "smtpPort": {
+
+        "type": "string"
+      
+        } ,
+        "smtpServer": {
+
+        "type": "string"
+      
+        } ,
+        "smtpUsername": {
+
+        "type": "string"
+      
+        } ,
+        "useSsl": {
+
+        "type": "boolean"
+      
+        } ,
+        "watchingEnabled": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.emailext.MailAccount": {
+      "type": "object",
+      "properties": {
+
+        "address": {
+
+        "type": "string"
+      
+        } ,
+        "advProperties": {
+
+        "type": "string"
+      
+        } ,
+        "jo": {
+"type":  "object",
+        "$ref": "#/definitions/net.sf.json.JSONObject"
+        } ,
+        "smtpHost": {
+
+        "type": "string"
+      
+        } ,
+        "smtpPassword": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.util.Secret"
+        } ,
+        "smtpPort": {
+
+        "type": "string"
+      
+        } ,
+        "smtpUsername": {
+
+        "type": "string"
+      
+        } ,
+        "useSsl": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.emailext.GroovyScriptPath": {
+      "type": "object",
+      "properties": {
+
+        "path": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.GitSCM$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "createAccountBasedOnEmail": {
+
+        "type": "boolean"
+      
+        } ,
+        "globalConfigEmail": {
+
+        "type": "string"
+      
+        } ,
+        "globalConfigName": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.tasks.Mailer$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "authentication": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tasks.SMTPAuthentication"
+        } ,
+        "charset": {
+
+        "type": "string"
+      
+        } ,
+        "defaultSuffix": {
+
+        "type": "string"
+      
+        } ,
+        "replyToAddress": {
+
+        "type": "string"
+      
+        } ,
+        "smtpHost": {
+
+        "type": "string"
+      
+        } ,
+        "smtpPort": {
+
+        "type": "string"
+      
+        } ,
+        "useSsl": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+    "hudson.tasks.SMTPAuthentication": {
+      "type": "object",
+      "properties": {
+
+        "password": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.util.Secret"
+        } ,
+        "username": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.model.ArtifactManagerConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "artifactManagerFactories": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.model.ArtifactManagerFactory"}
+        } 
+      }
+    }
+,
+  "jenkins.model.ArtifactManagerFactory": {
+    "type": "object"
+    
+  }
+,
+    "hudson.views.ViewsTabBar$GlobalConfigurationImpl": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "org.jenkinsci.plugins.workflow.flow.GlobalDefaultFlowDurabilityLevel$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "durabilityHint": {
+
+        "type": "string",
+        "enum": [ 
+        
+          "PERFORMANCE_OPTIMIZED",
+          "SURVIVABLE_NONATOMIC",
+          "MAX_SURVIVABILITY"
+        ]
+      
+        } 
+      }
+    }
+,
+    "hudson.views.GlobalDefaultViewConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.model.GlobalPluginConfiguration": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "hudson.tasks.Shell$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "shell": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "jenkins.model.JenkinsLocationConfiguration": {
+      "type": "object",
+      "properties": {
+
+        "adminAddress": {
+
+        "type": "string"
+      
+        } ,
+        "url": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+    "hudson.model.JDK$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.model.JDK"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.GitTool$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.git.GitTool"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.git.GitTool": {
+      "type": "object",
+      "properties": {
+
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "jenkins.mvn.GlobalMavenConfig": {
+      "type": "object",
+      "properties": {
+
+        "globalSettingsProvider": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.mvn.GlobalSettingsProvider"
+        } ,
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tasks.Maven$MavenInstallation"}
+        } ,
+        "settingsProvider": {
+"type":  "object",
+        "$ref": "#/definitions/jenkins.mvn.SettingsProvider"
+        } 
+      }
+    }
+,
+    "jenkins.mvn.DefaultSettingsProvider": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.mvn.FilePathSettingsProvider": {
+      "type": "object",
+      "properties": {
+
+        "path": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "jenkins.mvn.SettingsProvider": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/jenkins.mvn.DefaultSettingsProvider" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "filePath" : { "$ref" : "#/definitions/jenkins.mvn.FilePathSettingsProvider" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.tasks.Maven$MavenInstallation": {
+      "type": "object",
+      "properties": {
+
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "jenkins.mvn.DefaultGlobalSettingsProvider": {
+      "type": "object",
+      "properties": {
+
+      }
+    }
+,
+    "jenkins.mvn.FilePathGlobalSettingsProvider": {
+      "type": "object",
+      "properties": {
+
+        "path": {
+
+        "type": "string"
+      
+        } 
+      }
+    }
+,
+  "jenkins.mvn.GlobalSettingsProvider": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "standard" : { "$ref" : "#/definitions/jenkins.mvn.DefaultGlobalSettingsProvider" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "filePath" : { "$ref" : "#/definitions/jenkins.mvn.FilePathGlobalSettingsProvider" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "org.jenkinsci.plugins.gitclient.JGitTool$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolInstallation"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.tools.DockerTool": {
+      "type": "object",
+      "properties": {
+
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.gitclient.JGitTool": {
+      "type": "object",
+      "properties": {
+
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.gitclient.JGitApacheTool": {
+      "type": "object",
+      "properties": {
+
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } 
+      }
+    }
+,
+    "hudson.plugins.mercurial.MercurialInstallation": {
+      "type": "object",
+      "properties": {
+
+        "config": {
+
+        "type": "string"
+      
+        } ,
+        "debug": {
+
+        "type": "boolean"
+      
+        } ,
+        "executable": {
+
+        "type": "string"
+      
+        } ,
+        "home": {
+
+        "type": "string"
+      
+        } ,
+        "masterCacheRoot": {
+
+        "type": "string"
+      
+        } ,
+        "name": {
+
+        "type": "string"
+      
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "properties": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolProperty"}
+        } ,
+        "useCaches": {
+
+        "type": "boolean"
+      
+        } ,
+        "useSharing": {
+
+        "type": "boolean"
+      
+        } 
+      }
+    }
+,
+  "hudson.tools.ToolInstallation": {
+    "type": "object"
+    
+    ,
+    "oneOf" : [
+  
+    {
+      "properties" : {
+        "jdk" : { "$ref" : "#/definitions/hudson.model.JDK" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "git" : { "$ref" : "#/definitions/hudson.plugins.git.GitTool" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "maven" : { "$ref" : "#/definitions/hudson.tasks.Maven$MavenInstallation" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "jgit" : { "$ref" : "#/definitions/org.jenkinsci.plugins.gitclient.JGitTool" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "mercurialInstallation" : { "$ref" : "#/definitions/hudson.plugins.mercurial.MercurialInstallation" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "jgitapache" : { "$ref" : "#/definitions/org.jenkinsci.plugins.gitclient.JGitApacheTool" }
+      }
+    }
+    ,
+    {
+      "properties" : {
+        "dockerTool" : { "$ref" : "#/definitions/org.jenkinsci.plugins.docker.commons.tools.DockerTool" }
+      }
+    }
+    
+    ]
+  
+  }
+,
+    "hudson.plugins.mercurial.MercurialInstallation$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.plugins.mercurial.MercurialInstallation"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.docker.commons.tools.DockerTool$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/org.jenkinsci.plugins.docker.commons.tools.DockerTool"}
+        } 
+      }
+    }
+,
+    "org.jenkinsci.plugins.gitclient.JGitApacheTool$DescriptorImpl": {
+      "type": "object",
+      "properties": {
+
+        "installations": {
+
+          "type": "array",
+          "items": {
+"type":  "object",
+        "$ref": "#/definitions/hudson.tools.ToolInstallation"}
+        } 
+      }
+    }
+
+  }
+}

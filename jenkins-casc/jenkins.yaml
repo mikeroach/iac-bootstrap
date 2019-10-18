@@ -1,0 +1,276 @@
+---
+
+jenkins:
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+        - id: "admin"
+          password: ${JENKINS_ADMIN_PASS}
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+      - id: "default"
+        url: "https://updates.jenkins.io/update-center.json"
+  views:
+    - all:
+        name: "all"
+  viewsTabBar: "standard"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  downloadSettings:
+    useBrowser: false
+  sSHD:
+    port: -1
+unclassified:
+  buildStepOperation:
+    enabled: false
+  extendedEmailPublisher:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\n\n\
+      Check console output at $BUILD_URL to view the results."
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: 0
+    precedenceBulk: false
+    useSsl: false
+    watchingEnabled: false
+  gitHubPluginConfig:
+    hookUrl: "http://localhost:5555/github-webhook/"
+  gitSCM:
+    createAccountBasedOnEmail: false
+  location:
+    adminAddress: "mroach@got.net"
+    url: "http://localhost:5555/"
+  pollSCM:
+    pollingThreadCount: 10
+  slackNotifier:
+    baseUrl: ${SLACK_DDLLC_URL}
+    botUser: false
+    room: "roachtest"
+    sendAsText: false
+    tokenCredentialId: "Slack_DDLLC"
+  timestamperConfig:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+tool:
+  git:
+    installations:
+      - home: "git"
+        name: "Default"
+jobs:
+  - script: >
+      multibranchPipelineJob('aphorismophilia') {
+        description("Pipeline for our excuse to learn Go, CI/CD, and IaC.")
+        branchSources {
+          github {
+            id('8675308')
+            scanCredentialsId('GitHub_Jenkins-GCP')
+            repoOwner('mikeroach')
+            repository('aphorismophilia')
+            buildOriginBranchWithPR(false)
+            buildForkPRHead(false)
+            buildForkPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(true)
+          }
+        }
+        triggers {
+          periodic(1)
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            daysToKeep(14)
+            numToKeep(5)
+          }
+        }
+      }
+  - script: >
+      multibranchPipelineJob('iac-pipeline-auto') {
+        description("Automated Infrastructure as Code Pipeline")
+        branchSources {
+          github {
+            id('0000011')
+            scanCredentialsId('GitHub_Jenkins-GCP')
+            repoOwner('mikeroach')
+            repository('iac-pipeline-auto')
+            buildOriginBranchWithPR(false)
+            buildForkPRHead(false)
+            buildForkPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(true)
+            includes('master PR-*')
+          }
+        }
+        triggers {
+          periodic(1)
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            daysToKeep(14)
+            numToKeep(5)
+          }
+        }
+      }
+  - script: >
+      multibranchPipelineJob('iac-pipeline-gated') {
+        description("Gated Infrastructure as Code Pipeline")
+        branchSources {
+          github {
+            id('0000012')
+            scanCredentialsId('GitHub_Jenkins-GCP')
+            repoOwner('mikeroach')
+            repository('iac-pipeline-gated')
+            buildOriginBranchWithPR(false)
+            buildForkPRHead(false)
+            buildForkPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(true)
+            includes('master PR-*')
+          }
+        }
+        triggers {
+          periodic(1)
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            daysToKeep(14)
+            numToKeep(5)
+          }
+        }
+      }
+  - script: >
+      multibranchPipelineJob('iac-template-pipeline') {
+        description("IaC Environment Template Pipeline")
+        branchSources {
+          github {
+            id('0000013')
+            scanCredentialsId('GitHub_Jenkins-GCP')
+            repoOwner('mikeroach')
+            repository('iac-template-pipeline')
+            buildOriginBranchWithPR(false)
+            buildForkPRHead(false)
+            buildForkPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(true)
+            includes('master PR-*')
+          }
+        }
+        triggers {
+          periodic(1)
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            daysToKeep(14)
+            numToKeep(5)
+          }
+        }
+      }
+  - script: >
+      multibranchPipelineJob('aphorismophilia-terraform') {
+        description("Aphorismophilia - Terraservice-Lite Module")
+        branchSources {
+          github {
+            id('0000014')
+            scanCredentialsId('GitHub_Jenkins-GCP')
+            repoOwner('mikeroach')
+            repository('aphorismophilia-terraform')
+            buildOriginBranchWithPR(false)
+            buildForkPRHead(false)
+            buildForkPRMerge(false)
+            buildOriginBranch(true)
+            buildOriginPRHead(false)
+            buildOriginPRMerge(true)
+          }
+        }
+        triggers {
+          periodic(1)
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            daysToKeep(14)
+            numToKeep(5)
+          }
+        }
+      }
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "DockerHub_mikeroach"
+              username: "mikeroach"
+              password: ${DOCKERHUB_MIKEROACH_PASSWORD}
+              description: "Docker Hub 'mikeroach' User"
+          - usernamePassword:
+              scope: GLOBAL
+              id: "GitHub_Jenkins-GCP"
+              username: "mikeroach"
+              password: ${GITHUB_GCP_JENKINS_TOKEN}
+              description: "Github/mikeroach Personal Access Token for GCP-based IaC bootstrap Jenkins instance"
+          - string:
+              scope: GLOBAL
+              id: "Slack_DDLLC"
+              secret: ${SLACK_DDLLC_TOKEN}
+              description: "Slack integration token for DD LLC workspace"
+          - file:
+              scope: GLOBAL
+              id: "test-secret-file"
+              fileName: "test-secret-file.txt"
+              secretBytes: ${TEST_SECRET_FILE_B64}
+          - file:
+              scope: GLOBAL
+              id: "GitCrypt_Key_iac-template-pipeline"
+              fileName: "iac-template-pipeline.git-crypt-key"
+              secretBytes: ${GITCRYPT_KEY_IAC_TEMPLATE_PIPELINE}
+          - file:
+              scope: GLOBAL
+              id: "GitCrypt_Key_iac-pipeline-auto"
+              fileName: "iac-pipeline-auto.git-crypt-key"
+              secretBytes: ${GITCRYPT_KEY_IAC_PIPELINE_AUTO}
+          - file:
+              scope: GLOBAL
+              id: "GitCrypt_Key_iac-pipeline-gated"
+              fileName: "iac-pipeline-gated.git-crypt-key"
+              secretBytes: ${GITCRYPT_KEY_IAC_PIPELINE_GATED}
+          - file:
+              scope: GLOBAL
+              id: "GitCrypt_Key_aphorismophilia"
+              fileName: "aphorismophilia.git-crypt-key"
+              secretBytes: ${GITCRYPT_KEY_APHORISMOPHILIA}

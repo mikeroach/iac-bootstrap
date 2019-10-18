@@ -1,0 +1,11 @@
+.DS_Store
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .Keep tfvars files since we store them encrypted by git-crypt in secrets/ directory.
+#*.tfvars
