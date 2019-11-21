@@ -1,6 +1,6 @@
 #  Jenkins LTS Alpine image with Configuration-as-Code, Blue Ocean, and other useful plugins.
 
-FROM jenkins/jenkins:2.190.1-alpine
+FROM jenkins/jenkins:2.190.3-alpine
 USER root
 RUN apk --no-cache --update add docker gnupg make nagios-plugins-dns nagios-plugins-http python sudo
 RUN apk --no-cache add git-crypt hub --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing

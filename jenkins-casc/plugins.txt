@@ -1,4 +1,4 @@
-# Last update: 2019-10-03 for https://jenkins.io/security/advisory/2019-10-01/
+# Last update: 2019-11-21 for Jenkins 2.190.3 LTS upgrade and JSA https://jenkins.io/security/advisory/2019-11-21/
 antisamy-markup-formatter:latest
 blueocean:latest
 bouncycastle-api:latest
