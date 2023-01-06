@@ -131,7 +131,7 @@ jobs:
             buildOriginBranch(true)
             buildOriginPRHead(false)
             buildOriginPRMerge(true)
-            includes('master PR-*')
+            includes('main PR-*')
           }
         }
         triggers {
@@ -159,7 +159,7 @@ jobs:
             buildOriginBranch(true)
             buildOriginPRHead(false)
             buildOriginPRMerge(true)
-            includes('master PR-*')
+            includes('main PR-*')
           }
         }
         triggers {
@@ -187,7 +187,7 @@ jobs:
             buildOriginBranch(true)
             buildOriginPRHead(false)
             buildOriginPRMerge(true)
-            includes('master PR-*')
+            includes('main PR-*')
           }
         }
         triggers {
@@ -243,7 +243,7 @@ credentials:
               id: "GitHub_Jenkins-GCP"
               username: "mikeroach"
               password: ${GITHUB_GCP_JENKINS_TOKEN}
-              description: "Github/mikeroach Personal Access Token for GCP-based IaC bootstrap Jenkins instance"
+              description: "GitHub/mikeroach Personal Access Token for GCP-based IaC bootstrap Jenkins instance"
           - string:
               scope: GLOBAL
               id: "Slack_DDLLC"

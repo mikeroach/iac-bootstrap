@@ -4,7 +4,7 @@
 
 This repository contains Terraform to instantiate and manage these resources supporting the [Aphorismophilia project:](https://github.com/mikeroach/aphorismophilia)
 
-* Google Cloud Platform master [seed project](https://github.com/terraform-google-modules/terraform-google-project-factory/blob/v3.2.0/docs/GLOSSARY.md) aka [Terraform admin project](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform)
+* Google Cloud Platform primary [seed project](https://github.com/terraform-google-modules/terraform-google-project-factory/blob/v3.2.0/docs/GLOSSARY.md) aka [Terraform admin project](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform)
     * Used by the [GCP Project Factory Terraform Module](https://github.com/terraform-google-modules/terraform-google-project-factory) to create other GCP projects
 * GCS bucket for Terraform remote states
 * GCP management environment project
