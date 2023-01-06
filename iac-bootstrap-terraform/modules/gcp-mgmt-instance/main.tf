@@ -44,9 +44,9 @@ resource "google_compute_instance" "mgmt-instance" {
   preemption interrupted several CD jobs. Better to stay non-preemptible for
   less failures and take care to only run the meter when actively developing. */
   scheduling {
-    preemptible         = "${var.preemptible == true ? true : false}"            // Preemptible instances aren't eligible for Always Free pricing.
-    on_host_maintenance = "${var.preemptible == true ? "TERMINATE" : "MIGRATE"}" // Must be TERMINATE for preemptible instances.
-    automatic_restart   = "${var.preemptible == true ? false : true}"            // Must be false for preemptible instances.
+    preemptible         = var.preemptible == true ? true : false            // Preemptible instances aren't eligible for Always Free pricing.
+    on_host_maintenance = var.preemptible == true ? "TERMINATE" : "MIGRATE" // Must be TERMINATE for preemptible instances.
+    automatic_restart   = var.preemptible == true ? false : true            // Must be false for preemptible instances.
   }
 
   boot_disk {
@@ -95,7 +95,7 @@ resource "google_compute_instance" "mgmt-instance" {
     host        = google_compute_instance.mgmt-instance.network_interface.0.access_config.0.nat_ip
     type        = "ssh"
     user        = "sa_${file(var.gcp_seed_sa_id)}"
-    private_key = "${file(var.gcp_seed_sa_privkey)}"
+    private_key = file(var.gcp_seed_sa_privkey)
   }
 
   // Copy Salt GPG private key archive to new server.

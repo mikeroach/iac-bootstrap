@@ -22,21 +22,21 @@ v2.14.0 per: https://github.com/terraform-providers/terraform-provider-google/is
 provider "google" {
   alias       = "google-admin"
   version     = "2.15.0"
-  credentials = "${file(var.gcp_admin_credentials)}"
+  credentials = file(var.gcp_admin_credentials)
   region      = var.gcp_region
 }
 
 // Used by the project-factory and other GCP related modules.
 provider "google" {
   version     = "2.15.0"
-  credentials = "${file(var.gcp_seed_sa_credentials)}"
+  credentials = file(var.gcp_seed_sa_credentials)
   region      = var.gcp_region
 }
 
 // Used by the project-factory and other GCP related modules.
 provider "google-beta" {
   version     = "2.15.0"
-  credentials = "${file(var.gcp_seed_sa_credentials)}"
+  credentials = file(var.gcp_seed_sa_credentials)
   region      = var.gcp_region
 }
 
@@ -63,7 +63,7 @@ terraform {
 with this infrastructure, let's create a GCP Seed Project as part of the IaC bootstrap process. */
 module "gcp-seed-project" {
   source                      = "./modules/gcp-seed-project"
-  providers                   = { google = "google.google-admin" }
+  providers                   = { google = google.google-admin }
   gcp_billing_account         = var.gcp_billing_account
   gcp_organization_id         = var.gcp_organization_id
   gcp_seed_project            = var.gcp_seed_project
@@ -81,7 +81,7 @@ module "gcp-seed-project" {
 /* This is the least terrible way I could figure to invoke the correct Service Account helper
 script during gcp-seed-project provisioning; see get-project-factory-version.sh for ugly details. */
 data "external" "project-factory-version" {
-  program = ["get-project-factory-version.sh"]
+  program = ["./get-project-factory-version.sh"]
 }
 
 // Create a project to host our build and management infrastructure environment.
@@ -93,7 +93,7 @@ module "management-project" {
   billing_account         = var.gcp_billing_account
   credentials_path        = var.gcp_seed_sa_credentials
   default_service_account = "delete"
-  folder_id               = "${module.gcp-seed-project.root_folder}"
+  folder_id               = module.gcp-seed-project.root_folder
   group_name              = "devops"
   lien                    = true
   name                    = "IaC Bootstrap - MGMT1 Env"
@@ -108,8 +108,8 @@ module "management-project-metadata" {
   project = module.management-project.project_id
   metadata = {
     enable-oslogin                = "true"
-    google-compute-default-region = "${var.gcp_region}"
-    google-compute-default-zone   = "${var.gcp_zone}"
+    google-compute-default-region = var.gcp_region
+    google-compute-default-zone   = var.gcp_zone
   }
 }
 
@@ -151,8 +151,8 @@ module "shared-vpc" {
 // Configure firewall rules in the shared VPC network to protect our management resources.
 module "management-firewall" {
   source           = "./modules/gcp-firewall"
-  gcp_project      = "${module.management-project.project_id}"
-  network          = "${module.shared-vpc.network_name}"
+  gcp_project      = module.management-project.project_id
+  network          = module.shared-vpc.network_name
   trusted_networks = var.trusted_networks
 }
 
@@ -175,7 +175,7 @@ module "docker" {
   source                 = "./modules/docker"
   docker_client_cert     = var.docker_client_cert
   docker_client_key      = var.docker_client_key
-  docker_host            = "${module.admin1.external_ip}"
+  docker_host            = module.admin1.external_ip
   docker_jenkins_image   = var.docker_jenkins_image
   docker_jenkins_envvars = var.docker_jenkins_envvars
 }
@@ -189,7 +189,7 @@ module "tfdev-project" {
   billing_account         = var.gcp_billing_account
   credentials_path        = var.gcp_seed_sa_credentials
   default_service_account = "keep"
-  folder_id               = "${module.gcp-seed-project.root_folder}"
+  folder_id               = module.gcp-seed-project.root_folder
   group_name              = "devops"
   lien                    = true
   name                    = "terraform-development-env"
@@ -204,8 +204,8 @@ module "tfdev-project-project-metadata" {
   project = module.tfdev-project.project_id
   metadata = {
     enable-oslogin                = "true"
-    google-compute-default-region = "${var.gcp_region}"
-    google-compute-default-zone   = "${var.gcp_zone}"
+    google-compute-default-region = var.gcp_region
+    google-compute-default-zone   = var.gcp_zone
   }
 }
 
@@ -218,7 +218,7 @@ module "auto-project" {
   billing_account         = var.gcp_billing_account
   credentials_path        = var.gcp_seed_sa_credentials
   default_service_account = "keep"
-  folder_id               = "${module.gcp-seed-project.root_folder}"
+  folder_id               = module.gcp-seed-project.root_folder
   group_name              = "devops"
   lien                    = true
   name                    = "auto-promotion-env"
@@ -233,8 +233,8 @@ module "auto-project-project-metadata" {
   project = module.auto-project.project_id
   metadata = {
     enable-oslogin                = "true"
-    google-compute-default-region = "${var.gcp_region}"
-    google-compute-default-zone   = "${var.gcp_zone}"
+    google-compute-default-region = var.gcp_region
+    google-compute-default-zone   = var.gcp_zone
   }
 }
 
@@ -247,7 +247,7 @@ module "gated-project" {
   billing_account         = var.gcp_billing_account
   credentials_path        = var.gcp_seed_sa_credentials
   default_service_account = "keep"
-  folder_id               = "${module.gcp-seed-project.root_folder}"
+  folder_id               = module.gcp-seed-project.root_folder
   group_name              = "devops"
   lien                    = true
   name                    = "gated-promotion-env"
@@ -262,7 +262,7 @@ module "gated-project-project-metadata" {
   project = module.gated-project.project_id
   metadata = {
     enable-oslogin                = "true"
-    google-compute-default-region = "${var.gcp_region}"
-    google-compute-default-zone   = "${var.gcp_zone}"
+    google-compute-default-region = var.gcp_region
+    google-compute-default-zone   = var.gcp_zone
   }
 }
