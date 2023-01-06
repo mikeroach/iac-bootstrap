@@ -22,9 +22,9 @@ data "docker_registry_image" "jenkins" {
 }
 
 resource "docker_image" "jenkins" {
-  name          = "${data.docker_registry_image.jenkins.name}"
+  name          = data.docker_registry_image.jenkins.name
   keep_locally  = true
-  pull_triggers = ["${data.docker_registry_image.jenkins.name}"]
+  pull_triggers = [data.docker_registry_image.jenkins.name]
 }
 
 /* Create a Docker volume to store our persistent Jenkins data. Docker's
@@ -41,7 +41,7 @@ resource "docker_volume" "jenkins-home" {
 of the specified docker_image resource, NOT a tag. */
 resource "docker_container" "jenkins" {
   name     = "jenkins"
-  image    = "${docker_image.jenkins.latest}"
+  image    = docker_image.jenkins.latest
   env      = var.docker_jenkins_envvars
   must_run = true
   restart  = "unless-stopped"

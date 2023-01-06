@@ -29,7 +29,7 @@ https://www.terraform.io/docs/providers/random/r/id.html */
 resource "random_id" "project_id_suffix" {
   byte_length = 3
   keepers = {
-    project_id_prefix = "${var.gcp_seed_project}"
+    project_id_prefix = var.gcp_seed_project
   }
 }
 
@@ -71,7 +71,7 @@ resource "google_resource_manager_lien" "seed_project_lien" {
 /* FIXME: This is going to break with version 3 of the Terraform GCP provider. See:
 https://www.terraform.io/docs/providers/google/version_3_upgrade.html#resource-google_project_services */
 resource "google_project_services" "seed_project" {
-  project  = "${google_project.seed_project.project_id}"
+  project  = google_project.seed_project.project_id
   services = var.seed_project_services
 }
 
@@ -80,7 +80,7 @@ resource "google_storage_bucket" "terraform_state" {
   name               = var.seed_project_tfstate_bucket
   bucket_policy_only = false
   location           = "US"
-  project            = "${google_project.seed_project.project_id}"
+  project            = google_project.seed_project.project_id
   versioning {
     enabled = true
   }
@@ -88,6 +88,6 @@ resource "google_storage_bucket" "terraform_state" {
 
 // ... and apply an appropriate access control list since this will contain sensitive data.
 resource "google_storage_bucket_acl" "terraform_state_acl" {
-  bucket      = "${google_storage_bucket.terraform_state.name}"
+  bucket      = google_storage_bucket.terraform_state.name
   role_entity = var.seed_project_tfstate_acl
 }
